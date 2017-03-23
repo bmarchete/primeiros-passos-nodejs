@@ -1,0 +1,25 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+<h1 class="page-header">Edição de Tarefas</h1>
+<div class="col-md-6">
+  <form action="/edit/{{tarefa.id}}" method="post">
+    <input type="hidden" name="_method" value="put">
+    <div class="form-group">
+      <label for="titulo">Título</label>
+      <input type="text" class="form-control" name="titulo" id="titulo" value="{{tarefa.titulo}}">
+    </div>
+    <div class="form-group">
+      <label for="descricao">Descrição</label>
+      <input type="text" class="form-control" name="descricao" id="descricao" value="{{tarefa.descricao}}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="/" class="btn btn-default">Voltar</a>
+  </form>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+<h1>Alteração de Música</h1>
+<div class="col-md-6">
+  <form action="/edit/{{musica.id}}" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    <div class="form-group">
+      <label>Id</label>
+      <p class="form-control" id="nome">{{musica.id}}</p>
+    </div>
+    <div class="form-group">
+      <label for="nome">Nome da música</label>
+      <input type="text" class="form-control" name="nome" id="nome" value="{{musica.nome}}">
+    </div>
+    <div class="form-group">
+      <label for="artista">Nome do artista</label>
+      <input type="text" class="form-control" name="artista" id="artista" value="{{musica.artista}}">
+    </div>
+    <div class="form-group">
+      <label for="estrelas">Total de estrelas</label>
+      <input type="text" class="form-control" name="estrelas" id="estrelas" value="{{musica.estrelas}}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Alterar Música</button>
+    <a href="#" class="btn btn-default">Voltar</a>
+  </form>
+</div>
+
+
+
+{% endblock %}

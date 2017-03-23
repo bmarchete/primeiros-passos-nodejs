@@ -1,0 +1,63 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+<h1 class="page-header">Lista de tarefas</h1>
+
+{% if isAuth %}
+<a href="/add" class="btn btn-primary" style="margin-bottom: 15px;">Nova tarefa</a>
+
+{% endif %}
+
+<div class="row">
+
+  {% for tarefa in tarefas %}
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>{{tarefa.titulo}}</h3>
+        <p>{{tarefa.descricao}}</p>
+        {% if isAuth %}
+          <p>
+            <a href="/edit/{{tarefa.id}}" class="btn btn-primary">Editar</a>
+            <button class="btn btn-danger" onClick="excluir({{tarefa.id}})">Excluir</button>
+          </p>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+
+</div>
+
+<script>
+function excluir(id) {
+  const r = confirm("Tem certeza que deseja excluir este registro?");
+
+  if (r) {
+
+    const form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "/delete/" + id);
+
+    const deleteInput = document.createElement("input");
+    deleteInput.setAttribute("type", "hidden");
+    deleteInput.setAttribute("name", "_method");
+    deleteInput.setAttribute("value", "delete");
+
+    form.appendChild(deleteInput);
+
+    document.body.appendChild(form);
+    form.submit();
+
+  }
+}
+
+
+
+</script>
+
+{% endblock %}

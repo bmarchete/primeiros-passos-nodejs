@@ -1,0 +1,17 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+  {% if numero %}
+    <h1>Tabuada do {{numero}}</h1>
+
+      {% for i in [0,1,2,3,4,5,6,7,8,9,10] %}
+      <p>{{numero}} X {{i}} = {{ numero * i}}</p>
+      {% endfor %}
+
+  {% else  %}
+    <h1>Números ímpares são inválidos</h1>
+  {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+<h1 class="page-header">Novo usuário</h1>
+<div class="col-md-6">
+  <form action="/register" method="post">
+    <div class="form-group">
+      <label for="username">Nome de acesso</label>
+      <input type="text" class="form-control" name="username" id="username" placeholder="Nome">
+    </div>
+    <div class="form-group">
+      <label for="senha">Senha</label>
+      <input type="text" class="form-control" name="password" id="senha" placeholder="Senha">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrar</button>
+    <a href="/" class="btn btn-default">Voltar</a>
+  </form>
+</div>
+
+
+
+{% endblock %}
